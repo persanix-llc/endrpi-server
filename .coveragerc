@@ -1,0 +1,11 @@
+[run]
+branch = True
+source = endrpi
+omit =
+    *__init__*
+    *\config\*
+    *\model\*
+    endrpi\server.py
+
+[html]
+directory = coverage

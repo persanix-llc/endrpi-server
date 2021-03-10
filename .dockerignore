@@ -1,0 +1,12 @@
+# PyCharm specific files and folders
+/.idea
+
+# Cached Python bytecode
+/__pycache__
+
+# Virtual read_environment specific files and folders
+/venv
+
+# Code coverage files
+.coverage
+/coverage
