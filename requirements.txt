@@ -1,7 +1,7 @@
 # FastAPI libraries
 fastapi==0.63.0
 uvicorn[standard]==0.13.4
-pydantic==1.7.3
+pydantic==1.7.4
 
 # Starlette optional dependencies
 aiofiles==0.6.0
