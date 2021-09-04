@@ -36,11 +36,8 @@ class TestWebsocketRoutes(TestCase):
         # Setup the fast api testing client
         self.client = TestClient(app)
 
-        # Websocket client doesn't close its event loop in __exit__ resulting in a resource warning
         def close_websocket_test_client(websocket):
-            websocket.close(1000)
-            websocket._thread.join()
-            websocket._loop.close()
+            websocket.close()
 
         self.close_websocket_test_client = close_websocket_test_client
 
