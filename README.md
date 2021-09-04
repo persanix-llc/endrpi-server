@@ -3,6 +3,7 @@
 [![power on test](https://github.com/persanix-llc/endrpi-server/actions/workflows/power-on-test.yml/badge.svg)](https://github.com/persanix-llc/endrpi-server/actions/workflows/power-on-test.yml)
 [![unit tests](https://github.com/persanix-llc/endrpi-server/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/persanix-llc/endrpi-server/actions/workflows/unit-tests.yml)
 [![coverage](https://github.com/persanix-llc/endrpi-server/actions/workflows/coverage.yml/badge.svg)](https://github.com/persanix-llc/endrpi-server/actions/workflows/coverage.yml)
+[![CodeQL](https://github.com/persanix-llc/endrpi-server/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/persanix-llc/endrpi-server/actions/workflows/codeql-analysis.yml)
 
 Endpoints for Raspberry Pi (Endrpi) is a web API server for the [Raspberry Pi](https://raspberrypi.org)
 that provides basic statuses and GPIO controls through a collection of HTTP endpoints.
