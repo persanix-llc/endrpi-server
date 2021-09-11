@@ -13,6 +13,8 @@
 #  limitations under the License.
 
 import os
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
@@ -22,7 +24,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.requests import Request
 from fastapi.responses import FileResponse, Response
 
-from definitions import ROOT_DIRECTORY
 from endrpi.model.message import MessageData
 from endrpi.routes.pin import router as pin_router
 from endrpi.routes.system import router as system_router
@@ -40,8 +41,8 @@ app.include_router(websocket_router)
 app.include_router(system_router, tags=['system'])
 app.include_router(pin_router, tags=['pins'])
 
-public_directory = os.path.join(ROOT_DIRECTORY, 'public')
-app.mount('/public', StaticFiles(directory=public_directory, html=True), name="public")
+public_path = os.path.join(Path(__file__).parent, "_public")
+app.mount('/public', StaticFiles(directory=public_path, html=True, check_dir=True), name='public')
 
 
 @app.get("/docs", include_in_schema=False)
@@ -67,7 +68,7 @@ async def get_docs():
 
 @app.get("/", include_in_schema=False)
 async def get_docs():
-    return FileResponse('public/index.html')
+    return FileResponse(os.path.join(public_path, 'index.html'))
 
 
 @app.exception_handler(RequestValidationError)
