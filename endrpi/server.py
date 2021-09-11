@@ -69,7 +69,7 @@ async def get_docs():
         )
     else:
         return Response(
-            f'Swagger-UI files not found in "{public_pathname}". '
+            f'Swagger-UI files not found in "{public_url_path}". '
             f'More details are available on the installation page of the project documentation website.',
             status_code=404
         )
