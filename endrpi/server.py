@@ -41,33 +41,42 @@ app.include_router(websocket_router)
 app.include_router(system_router, tags=['system'])
 app.include_router(pin_router, tags=['pins'])
 
-public_path = os.path.join(Path(__file__).parent, "_public")
+public_path = os.path.join(Path(__file__).parent, '_public')
 app.mount('/public', StaticFiles(directory=public_path, html=True, check_dir=True), name='public')
 
 
 @app.get("/docs", include_in_schema=False)
 async def get_docs():
-    public_path = 'public/swagger-ui'
-    swagger_js_path = f'{public_path}/swagger-ui-bundle.js'
-    swagger_css_path = f'{public_path}/swagger-ui.css'
+    swagger_directory = 'swagger-ui'
+    swagger_js_filename = 'swagger-ui-bundle.js'
+    swagger_css_filename = 'swagger-ui.css'
 
-    if os.path.exists(swagger_js_path) and os.path.exists(swagger_css_path):
+    # Swagger paths as they exist in the file system
+    swagger_js_file_path = os.path.join(public_path, swagger_directory, swagger_js_filename)
+    swagger_css_file_path = os.path.join(public_path, swagger_directory, swagger_css_filename)
+
+    # Swagger paths as they are served from the public directory
+    public_url_path = f'public/{swagger_directory}'
+    swagger_js_url_path = f'{public_url_path}/{swagger_js_filename}'
+    swagger_css_url_path = f'{public_url_path}/{swagger_css_filename}'
+
+    if os.path.exists(swagger_js_file_path) and os.path.exists(swagger_css_file_path):
         return get_swagger_ui_html(
             openapi_url=app.openapi_url,
             title=app.title + ' - Swagger UI',
-            swagger_js_url=swagger_js_path,
-            swagger_css_url=swagger_css_path,
+            swagger_js_url=swagger_js_url_path,
+            swagger_css_url=swagger_css_url_path,
         )
     else:
         return Response(
-            f'Swagger-UI files not found in "{public_path}". '
+            f'Swagger-UI files not found in "{public_pathname}". '
             f'More details are available on the installation page of the project documentation website.',
             status_code=404
         )
 
 
 @app.get("/", include_in_schema=False)
-async def get_docs():
+async def get_index():
     return FileResponse(os.path.join(public_path, 'index.html'))
 
 
