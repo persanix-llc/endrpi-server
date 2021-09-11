@@ -15,8 +15,7 @@
 import subprocess
 from os import path
 import webbrowser
-
-from definitions import ROOT_DIRECTORY
+from pathlib import Path
 
 
 def generate_code_coverage():
@@ -26,10 +25,12 @@ def generate_code_coverage():
     Run: python -m scripts.code_coverage
     """
 
+    root_path = Path(__file__).parent.parent
+
     try:
         print('Running code coverage...')
         command = ['coverage', 'run', '-m', 'unittest', 'discover']
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=ROOT_DIRECTORY)
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=root_path)
         stdout, stderr = process.communicate()
 
         # Coverage writes to standard error even if successful, parse result for the string 'OK'
@@ -40,10 +41,10 @@ def generate_code_coverage():
         if output_success:
             print('Generating HTML...')
             command = ['coverage', 'html']
-            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=ROOT_DIRECTORY)
+            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=root_path)
             process.communicate()
 
-            coverage_html_path = path.join(ROOT_DIRECTORY, 'coverage', 'index.html')
+            coverage_html_path = path.join(root_path, 'coverage', 'index.html')
             if path.exists(coverage_html_path):
                 print('Launching browser...')
                 webbrowser.open(coverage_html_path)
