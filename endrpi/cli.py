@@ -25,8 +25,6 @@ from endrpi.config.pin_factory import configure_pin_factory
 from endrpi.server import app
 
 
-
-
 def main():
     # Configure arguments that can be passed to endrpi
     parser = argparse.ArgumentParser(add_help=False)
