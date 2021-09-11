@@ -12,7 +12,6 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-import os
-
-# Reference to the directory this file exists in (project root)
-ROOT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+[build-system]
+    requires = ["setuptools>=42", "wheel"]
+    build-backend = "setuptools.build_meta"

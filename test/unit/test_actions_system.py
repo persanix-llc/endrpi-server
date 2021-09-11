@@ -17,9 +17,8 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from pydantic import ValidationError, BaseModel
-from endrpi.model.message import PlatformMessage, TemperatureMessage, ThrottleMessage, UpTimeMessage, SystemMessage, \
-    FrequencyMessage, MemoryMessage
-
+from endrpi.model.message import PlatformMessage, TemperatureMessage, ThrottleMessage, UpTimeMessage, \
+    SystemMessage, FrequencyMessage, MemoryMessage
 from endrpi.actions.system import read_temperature, read_platform, read_uptime, read_throttle, read_frequency, \
     read_memory, read_system
 from endrpi.model.action_result import error_action_result, success_action_result

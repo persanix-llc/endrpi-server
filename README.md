@@ -33,19 +33,8 @@ and [others](requirements.txt).
 
 ## Quickstart
 
-##### 1. Clone project
 ```
-git clone https://github.com/persanix-llc/endrpi-server.git && cd endrpi-server
-```
-
-##### 2. Install dependencies
-```
-pip3 install -r requirements.txt
-```
-
-##### 3. Start server
-```
-python3 endr.py
+pip3 install -U endrpi && endrpi
 ```
 
 ## Project documentation

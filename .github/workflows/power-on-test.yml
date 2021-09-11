@@ -12,7 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-name: power on test
+name: Power-on Test
 on: [push]
 jobs:
   power-on-test:
@@ -30,4 +30,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run server
-        run: python endr.py & sleep 10 && curl -I -X GET --fail "http://localhost:5000"
+        run: python ./endrpi/cli.py & sleep 10 && curl -I -X GET --fail "http://localhost:5000"

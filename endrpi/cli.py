@@ -12,16 +12,20 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+import os
+import sys
 import uvicorn
+import argparse
+
+# Fix endrpi module not found error
+sys.path.append(os.path.abspath('.'))
 
 from endrpi.config.logging import configure_logger, get_logging_configuration, get_logger
 from endrpi.config.pin_factory import configure_pin_factory
-
 from endrpi.server import app
 
-import argparse
 
-if __name__ == '__main__':
+def main():
     # Configure arguments that can be passed to endrpi
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument('-p', '--port',
@@ -48,3 +52,7 @@ if __name__ == '__main__':
         uvicorn.run(app, host=args.host, port=args.port, log_config=uvicorn_logging_config)
     except Exception as exception:
         get_logger().error(exception)
+
+
+if __name__ == '__main__':
+    main()
