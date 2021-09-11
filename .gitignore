@@ -9,6 +9,7 @@
 
 # Code coverage files
 .coverage
+/coverage
 
 # Build files
 /dist
