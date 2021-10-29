@@ -37,6 +37,27 @@ and [others](requirements.txt).
 pip3 install -U endrpi && endrpi
 ```
 
+## Example Request
+
+The following request returns the temperature of the Raspberry Pi® System on Chip.
+Request
+
+```GET http://localhost:5000/system/temperature```
+
+Response
+
+```javascript
+{
+  "systemOnChip": {
+      "quantity": 45.622,
+      "prefix": null,
+      "unitOfMeasurement": "CELSIUS"
+  }
+}
+```
+
+Endrpi generates live, interactive API documentation. A complete list of REST endpoints can be found hosted at [localhost:5000/docs](http://localhost:5000/docs).
+
 ## Project documentation
 Project documentation is hosted at [https://endrpi.io](https://endrpi.io).
 
