@@ -28,7 +28,7 @@ and [others](requirements.txt).
 ≥ Python 3.7
 
 ≥ Raspberry Pi 3
-* Compatible with the standard [Raspberry Pi OS](https://www.raspberrypi.org/documentation/raspbian) image
+* Compatible with the standard [Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/os.html) image
 * Previous Raspberry Pi versions may work but have not been verified
 
 ## Quickstart
